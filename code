@@ -1,0 +1,257 @@
+
+import random
+
+def menu():
+    print("[1] Play game")
+    print("[2] Quit")
+
+menu()
+
+option = int(input("Enter your option: "))
+# The program would register any option other than 1 or 3 as a quit, I fixed this by using >2 instead of !=3
+# I added error checking
+
+while option > 2:
+    print("Option invalid")
+    option = int(input("Enter your option: "))
+
+if option == 1:
+    pass
+
+else:
+    print("Thanks for using the code")
+    quit()
+
+
+
+def NumberOfCards():
+
+    numberofcards = int(input("Please enter how many cards you would like to play with!(between 4 and 30 IT HAS TO BE EVEN): "))
+
+    if numberofcards >= 4 and numberofcards <=30 and numberofcards % 2 == 0:
+
+        print("value accepted")
+
+        return numberofcards
+
+    else:
+
+        print("thats to low/high or odd try again ill return you to the main menu and you can try again!")
+
+        """ This is a recursive call to the function. While it may work fine right now, it's generally not a good idea to use this technique in this way,
+         as there is a limit to the amount of times a function can be called in itself. A better way would be to use a while loop to handle card number inputs.
+         Try and think about how you would do this. """
+        return NumberOfCards()
+
+
+
+def Exercise(cards):
+
+    values=[]
+
+    for i in range(0,len(cards)):
+
+        values.append(random.randint(1,5))
+
+    return values
+
+
+def Intelligence(cards):
+
+    values=[]
+
+    for i in range(0,len(cards)):
+
+        values.append(random.randint(1,100))
+
+    return values
+
+
+def Friendliness(cards):
+
+    values=[]
+
+    for i in range(0,len(cards)):
+
+        values.append(random.randint(1,10))
+
+    return values
+
+
+
+def Drool(cards):
+
+    values=[]
+
+    for i in range(0,len(cards)):
+        values.append(random.randint(1,10))
+
+    return values
+
+
+def pilenumber():
+    pass
+
+def cardgeneration():
+    pass
+
+def DisplayCard(playercards):
+    print(PlayerCards[0])
+
+
+
+EachPlayerCards = int(NumberOfCards()/ 2)
+
+
+
+ListOfDogs = ["Annie the Afgan Hound","Bertie the Boxer","Betty the Borzoi","Charlie the Chihuahua","Chaz the Cocker Spaniel",
+              "Donald the Dalmatian","Dottie the Doberman","Fern the Fox Terrier","Frank the French Bulldog","George the Great Dane",
+              "Gertie the Greyhound","Harry the Harrier","Ian the Irish Wolfhound","Juno the Jack Russell","Keith the Kerry Blue","Larry the Labrador","Marge the Maltese",
+              "Max the Mutt","Nutty the Newfoundland","Olive the Old English Sheepdog","Peter the Pug","Poppy the Pekingese","Rosie the Rottweiler","Ruby the Retriever",
+              "Sam the Springer Spaniel","Sukie the Saluki","Vernon the Vizsla","Whilma the West Highland Terrier","William the Whippet",
+              "Yolande the Yorkshire Terrier"]
+
+
+
+random.shuffle(ListOfDogs)
+
+PlayerCards=[]
+ComputerCards =[]
+
+# I made the handing out cards more efficient
+
+for card in range(EachPlayerCards):
+
+    PlayerCards.append(ListOfDogs[card])
+    ComputerCards.append(ListOfDogs[EachPlayerCards+card])
+
+print(PlayerCards)
+print(ComputerCards)
+
+
+PlayerExercise=Exercise(PlayerCards)
+PlayerIntelligence=Intelligence(PlayerCards)
+PlayerFriendliness=Friendliness(PlayerCards)
+PlayerDrool=Drool(PlayerCards)
+
+# Does the same for ComputerCards
+
+ComputerExercise=Exercise(ComputerCards)
+ComputerIntelligence=Intelligence(ComputerCards)
+ComputerFriendliness=Friendliness(ComputerCards)
+ComputerDrool=Drool(ComputerCards)
+
+def startgame():
+    """ pilenumber hasn't been defined yet, but I get what you're trying to do """
+    playerpile = pilenumber/2
+    computerpile = pilenumber/2
+
+    while true:
+        print("you have :",playerpile,"cards :)")
+        print("the computer has:",computerpile,"cards :)")
+        print("your dogs name is :")
+        print(random.choice(dogs))
+
+
+        category=input("Please Select a Catorgory (1)Exercise, (2)Intelligence, (3)Friendliness, (4)Drool")
+
+        y = 0
+
+     
+        if category == 1:
+            print("you have chosen to compare Excercise")
+            print("player :", playerexcercise,)
+            print("Computer: ",computerexcercise,".")
+
+            if ComputerExcercise > PlayerExcercise:
+                        print("aw no you lost the : computer wins!")
+                        playerpile = playerpile - 1
+                        computerpile = computerpile + 1
+                        print(PlayerExcercise)
+
+                        
+                        cardgeneration()
+                        y = 1
+            elif ComputerExcercise <= PlayerExcercise:
+                        print("whooop you won : player wins!")
+                        playerpile = playerpile + 1
+                        computerpile = computerpile - 1
+                        cardgeneration()
+                        y = 1
+
+
+        if category == 2:
+            print("you have chosen to compare intelligence")
+            print("player :", PlayerIntelligence,)
+            print("Computer: ",ComputerIntelligence,".")
+
+            if ComputerIntelligence > PlayerIntelligence:
+                        print("aw no you lost the : computer wins!")
+                        playerpile = playerpile - 1
+                        computerpile = computerpile + 1
+                        print(PlayerIntelligence)
+                        cardgeneration()
+                        y = 1
+            elif ComputerIntelligence<= PlayerIntelligence:
+                        print("whooop you won : player wins!")
+                        playerpile = playerpile + 1
+                        computerpile = computerpile - 1
+                        cardgeneration()
+                        y = 1
+
+
+        if category == 3:
+            print("you have chosen to compare friendliness")
+            print("player :", PlayerFriendliness,)
+            print("Computer: ",ComputerFriendliness,".")
+
+            if ComputerFriendliness> PlayerFriendliness:
+                        print("aw no you lost the : computer wins!")
+                        playerpile = playerpile - 1
+                        computerpile = computerpile + 1
+                        print(PlayerFriendliness)
+                        cardgeneration()
+                        y = 1
+            elif ComputerFriendliness <= PlayerFriendliness:
+                        print("whooop you won : player wins!")
+                        playerpile = playerpile + 1
+                        computerpile = computerpile - 1
+                        cardgeneration()
+                        y = 1
+
+
+        if category == 4:
+            print("you have chosen to compare drool")
+            print("player :", PlayerDrool,)
+            print("Computer: ",ComputerDrool,".")
+
+            if ComputerDrool > PlayerDrool:
+                        print("aw no you lost the : computer wins!")
+                        playerpile = playerpile - 1
+                        computerpile = computerpile + 1
+                        print(PlayerDrool)
+                        cardgeneration()
+                        y = 1
+            elif ComputerDrool <= PlayerDrool:
+                        print("whooop you won : player wins!")
+                        playerpile = playerpile + 1
+                        computerpile = computerpile - 1
+                        cardgeneration()
+                        y = 1
+        if playerpile == pilenumber:
+                    print("Player wins the game!")
+                    leave()
+        elif computerpile == pilenumber:
+                    print("Computer wins the game!")
+
+
+def leave():
+
+    leave = input(("Would you like to play again or leave the game?"))
+
+    if (leave == Y or leave == Y):
+        print("Please come again!")
+        raise SystemExit #Stops the whole code
+    elif (leave == N or leave == n):
+        print("Returning to main menu.")
+        menu() #Returns to the main menu
